@@ -40,7 +40,7 @@ export default {
       const ret = await getComplete(text)
       this.items = ret.candidates.map((can, ind) => ({
         id: ind + 1,
-        name: text + can
+        name: text.trim() + can
       }))
     },
     async inputChange (text) {
