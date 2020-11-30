@@ -9,6 +9,7 @@
       @changed="inputChange"
       @selected="itemSelected">
     </vue-suggestion>
+    <span>Memory Usage: {{memory}} MB</span>
   </div>
 </template>
 
@@ -22,7 +23,8 @@ export default {
     return {
       item: {},
       items: [],
-      ItemTemplate
+      ItemTemplate,
+      memory: 0
     }
   },
   mounted () {
@@ -42,6 +44,7 @@ export default {
         id: ind + 1,
         name: text.trim() + can
       }))
+      this.memory = ret.memory_usage
     },
     async inputChange (text) {
       await this.loadItem(text)
